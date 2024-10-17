@@ -3,6 +3,12 @@ package util
 import model.Memo
 import java.io.File
 
+/**
+ * File 로 관리되는 MemoDatabase Helper class
+ * 메모 파일은 JSON string 형태로 저장된다
+ * 읽기의 경우 List<[Memo]>,
+ * 쓰기의 경우 [Memo] 데이터 클래스의 Serialized JSON String 형태로 저장된다
+ */
 class FileMemoDatabase private constructor() : IMemoDatabase {
     private var file: File = File(MEMO_FILENAME)
 
@@ -21,7 +27,6 @@ class FileMemoDatabase private constructor() : IMemoDatabase {
         }
 
     }
-
 
     override fun writeMemo(memos: List<Memo>): Boolean {
         try {
