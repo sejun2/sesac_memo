@@ -14,6 +14,7 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation("com.squareup.moshi:moshi:1.15.1")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
+    testImplementation("io.mockk:mockk:1.13.13")
 }
 
 tasks.test {
