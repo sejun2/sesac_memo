@@ -9,19 +9,18 @@ import java.io.File
  * 읽기의 경우 List<[Memo]>,
  * 쓰기의 경우 [Memo] 데이터 클래스의 Serialized JSON String 형태로 저장된다
  */
-class FileMemoDatabase private constructor() : IMemoDatabase {
-    private var file: File = File(MEMO_FILENAME)
+class FileMemoDatabase private constructor(private val file: File) : IMemoDatabase {
 
     companion object {
-        const val MEMO_FILENAME = "memo_file.txt"
+        private const val MEMO_FILENAME = "memo_file.txt"
 
         @JvmStatic
         private var INSTANCE: FileMemoDatabase? = null
 
         @JvmStatic
-        fun getInstance(): FileMemoDatabase {
+        fun getInstance(file: File = File(MEMO_FILENAME)): FileMemoDatabase {
             if (INSTANCE == null) {
-                INSTANCE = FileMemoDatabase()
+                INSTANCE = FileMemoDatabase(file)
             }
 
             return INSTANCE!!
