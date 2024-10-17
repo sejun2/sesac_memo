@@ -18,6 +18,7 @@ class FileMemoDatabase private constructor() : IMemoDatabase {
         @JvmStatic
         private var INSTANCE: FileMemoDatabase? = null
 
+        @JvmStatic
         fun getInstance(): FileMemoDatabase {
             if (INSTANCE == null) {
                 INSTANCE = FileMemoDatabase()
