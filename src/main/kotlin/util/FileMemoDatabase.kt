@@ -1,6 +1,7 @@
 package util
 
 import model.Memo
+import org.jetbrains.annotations.TestOnly
 import java.io.File
 
 /**
@@ -15,17 +16,21 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         private const val MEMO_FILENAME = "memo_file.txt"
 
         @JvmStatic
+        @Volatile
         private var INSTANCE: FileMemoDatabase? = null
 
         @JvmStatic
         fun getInstance(file: File = File(MEMO_FILENAME)): FileMemoDatabase {
+            if ((INSTANCE?.file?.name ?: "") != file.name) {
+                INSTANCE = FileMemoDatabase(file)
+            }
+
             if (INSTANCE == null) {
                 INSTANCE = FileMemoDatabase(file)
             }
 
             return INSTANCE!!
         }
-
     }
 
     override fun writeMemo(memos: List<Memo>): Boolean {
