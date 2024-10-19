@@ -1,8 +1,8 @@
 package util
 
+import io.mockk.*
 import io.mockk.InternalPlatformDsl.toArray
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.MockKSettings.relaxed
 import model.Memo
 import org.jetbrains.annotations.TestOnly
 import org.junit.jupiter.api.Test
@@ -18,6 +18,7 @@ import kotlin.test.BeforeTest
 class FileMemoDatabaseTest {
 
     private lateinit var fileMemoDatabase: FileMemoDatabase
+    private lateinit var fileMemoDatabaseForFail: FileMemoDatabase
     private lateinit var memos: List<Memo>
     private lateinit var file: File
     private lateinit var mockFile: File
@@ -37,16 +38,20 @@ class FileMemoDatabaseTest {
                 id = 3, content = "C"
             ),
         )
-        mockFile = mockk<File>()
-        every { mockFile.name } returns "testfile"
+        mockFile = spyk(File("fail_memo_test_file.txt"))
+        every { mockFile.exists() } returns false
         file = File(MEMO_FILE_NAME)
         fileMemoDatabase = FileMemoDatabase.getInstance(file)
+        fileMemoDatabaseForFail = FileMemoDatabase.getInstance(mockFile)
     }
 
     @AfterTest
     fun afterTest(){
         // remove test memo file after test
         file.delete()
+        mockFile.delete()
+        FileMemoDatabase.disposeInstance(file.name)
+        FileMemoDatabase.disposeInstance(mockFile.name)
     }
 
     @Test
@@ -60,20 +65,20 @@ class FileMemoDatabaseTest {
     @Test
     fun `when write memo success, then return true`() {
         val res = fileMemoDatabase.writeMemo(memos)
-        assertEquals(res, true)
+        assertEquals(true, res)
     }
 
     @Test
     fun `when write memo failed, then return false`() {
-        fileMemoDatabase = FileMemoDatabase.getInstance(mockFile)
-        val res = fileMemoDatabase.writeMemo(memos)
+        val res = fileMemoDatabaseForFail.writeMemo(memos)
 
-        assertEquals(res, false)
+        assertEquals(false, res)
     }
 
     @Test
     fun readMemo() {
         fileMemoDatabase = FileMemoDatabase.getInstance()
+        fileMemoDatabase.writeMemo(memos)
         val res = fileMemoDatabase.readMemo()
 
         assertArrayEquals(memos.toTypedArray(), res.toTypedArray())
