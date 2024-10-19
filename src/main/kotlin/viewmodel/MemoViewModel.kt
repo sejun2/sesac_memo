@@ -1,18 +1,15 @@
 package viewmodel
 
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import model.Memo
 
 class MemoViewModel {
 
-    var uiState: MutableStateFlow<MemoUIState> = MutableStateFlow(
-        value = MemoUIState.HomeUIState
-    )
+    var uiState: MemoUIState =
+        MemoUIState.HomeUIState
     var memos: List<Memo> = mutableListOf()
 
     fun setUIState(uiState: MemoUIState) {
-        this.uiState.value = uiState
+        this.uiState = uiState
     }
 }
 
@@ -27,8 +24,11 @@ sealed class MemoUIState {
             println(options.toString())
         }
 
-        override val options: List<MemoOption>
-            get() = listOf(MemoOption.MODIFY, MemoOption.HELLO, MemoOption.WRITE)
+        override val options: List<MemoNavigationOption>
+            get() = listOf(
+                MemoNavigationOption(from = this, to = ProfileUIState, menuName = "HomeToProfile"),
+                MemoNavigationOption(from = this, to = HelloUIState, menuName = "HomeToHello"),
+            )
     }
 
     data object ProfileUIState : MemoUIState() {
@@ -40,8 +40,11 @@ sealed class MemoUIState {
             println(options.toString())
         }
 
-        override val options: List<MemoOption>
-            get() = listOf(MemoOption.MODIFY, MemoOption.HELLO)
+        override val options: List<MemoNavigationOption>
+            get() = listOf(
+                MemoNavigationOption(from = this, to = HomeUIState),
+                MemoNavigationOption(from = this, to = HelloUIState),
+            )
     }
 
     data object HelloUIState : MemoUIState() {
@@ -53,19 +56,28 @@ sealed class MemoUIState {
             println(options.toString())
         }
 
-        override val options: List<MemoOption>
-            get() = listOf(MemoOption.MODIFY)
+        override val options: List<MemoNavigationOption>
+            get() = listOf(
+                MemoNavigationOption(from = this, to = HomeUIState),
+                MemoNavigationOption(from = this, to = ProfileUIState),
+            )
     }
     // 기타 등등
 
     abstract fun displayView()
     abstract fun showOptions()
 
-    abstract val options: List<MemoOption>
+    abstract val options: List<MemoNavigationOption>
 }
 
-enum class MemoOption(val uiState: MemoUIState) {
-    MODIFY(uiState = MemoUIState.HomeUIState),
-    WRITE(uiState = MemoUIState.ProfileUIState),
-    HELLO(uiState = MemoUIState.HelloUIState),
+data class MemoNavigationOption(
+    val from: MemoUIState,
+    val to: MemoUIState,
+    val menuName: String = ""
+
+
+) {
+    override fun toString(): String {
+        return menuName
+    }
 }

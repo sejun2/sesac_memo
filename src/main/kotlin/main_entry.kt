@@ -32,19 +32,17 @@ fun main(args: Array<String>) {
 }
 
 class ConsoleView(private val viewModel: MemoViewModel) {
-    fun start() = runBlocking {
-        launch {
-            while (true) {
-                val state = viewModel.uiState.value
-                state.displayView()
-                state.showOptions()
-                print("Select an option: ")
-                val selection = readLine()?.toIntOrNull()
-                if (selection != null && selection > 0 && selection <= state.options.size) {
-                    viewModel.setUIState(state.options[selection - 1].uiState)
-                } else {
-                    println("Invalid selection. Please try again.")
-                }
+    fun start() {
+        while (true) {
+            val state = viewModel.uiState
+            state.displayView()
+            state.showOptions()
+            print("Select an option: ")
+            val selection = readLine()?.toIntOrNull()
+            if (selection != null && selection > 0 && selection <= state.options.size) {
+                viewModel.setUIState(state.options.get(selection - 1).to)
+            } else {
+                println("Invalid selection. Please try again.")
             }
         }
     }
