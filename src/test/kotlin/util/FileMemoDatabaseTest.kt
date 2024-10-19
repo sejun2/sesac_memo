@@ -1,17 +1,12 @@
 package util
 
-import io.mockk.*
-import io.mockk.InternalPlatformDsl.toArray
-import io.mockk.MockKSettings.relaxed
+import io.mockk.every
+import io.mockk.spyk
 import model.Memo
-import org.jetbrains.annotations.TestOnly
+import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import java.io.File
-import java.io.IOException
-import java.util.*
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 
