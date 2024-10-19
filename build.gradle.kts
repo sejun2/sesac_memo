@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.0.20"
+    kotlin("jvm") version "2.0.21"
     id("com.google.devtools.ksp").version("2.0.21-1.0.25") // Or latest version of KSP
 }
 
@@ -19,6 +19,9 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+tasks.withType<Test> {
+    jvmArgs("--add-opens", "java.base/java.io=ALL-UNNAMED")
 }
 kotlin {
     jvmToolchain(21)
