@@ -3,6 +3,7 @@ package util
 import model.Memo
 import org.jetbrains.annotations.TestOnly
 import java.io.File
+import java.io.IOException
 
 /**
  * File 로 관리되는 MemoDatabase Helper class
@@ -15,42 +16,54 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     companion object {
         private const val MEMO_FILENAME = "memo_file.txt"
 
-        @JvmStatic
         @Volatile
-        private var INSTANCE: FileMemoDatabase? = null
+        private var instanceCache = HashMap<String, FileMemoDatabase>()
 
         @JvmStatic
+        @Synchronized
         fun getInstance(file: File = File(MEMO_FILENAME)): FileMemoDatabase {
-            if ((INSTANCE?.file?.name ?: "") != file.name) {
-                INSTANCE = FileMemoDatabase(file)
+            if (instanceCache.get(file.name) == null) {
+                instanceCache[file.name] = FileMemoDatabase(file)
             }
 
-            if (INSTANCE == null) {
-                INSTANCE = FileMemoDatabase(file)
-            }
+            return instanceCache.get(file.name)!!
+        }
 
-            return INSTANCE!!
+        @JvmStatic
+        @TestOnly
+        fun disposeInstance(name: String) {
+            instanceCache.remove(name)
+        }
+    }
+
+    init {
+        if (!file.exists()) {
+            file.createNewFile()
         }
     }
 
     override fun writeMemo(memos: List<Memo>): Boolean {
         try {
             val jsonString = MoshiParser.jsonAdapter.toJson(memos)
-            with(file.writer()) {
+            if (!file.exists()) throw IOException()
+
+            with(file.bufferedWriter()) {
                 write(jsonString)
                 close()
             }
 
-            println(file.absoluteFile)
             return true
         } catch (e: Exception) {
+            e.printStackTrace()
             return false
         }
     }
 
     override fun readMemo(): List<Memo> {
         try {
-            with(file.reader()) {
+            if (!file.exists()) throw IOException()
+
+            with(file.bufferedReader()) {
                 val jsonString = readText()
                 close()
 
@@ -58,6 +71,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
                 return memos ?: emptyList()
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             return emptyList()
         }
     }
