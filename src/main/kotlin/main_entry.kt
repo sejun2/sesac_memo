@@ -1,13 +1,7 @@
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.selects.whileSelect
 import model.Memo
 import util.FileMemoDatabase
 import util.IMemoDatabase
-import viewmodel.MemoUIState
 import viewmodel.MemoViewModel
-import java.util.Scanner
 
 fun main(args: Array<String>) {
     println("MAIN ENTRY POINT")
@@ -28,7 +22,7 @@ fun main(args: Array<String>) {
         )
     )
 
-    ConsoleView(viewModel = MemoViewModel()).start()
+    ConsoleView(viewModel = MemoViewModel.getInstance()).start()
 }
 
 class ConsoleView(private val viewModel: MemoViewModel) {
@@ -38,8 +32,9 @@ class ConsoleView(private val viewModel: MemoViewModel) {
             state.displayView()
             state.showOptions()
             print("Select an option: ")
-            val selection = readLine()?.toIntOrNull()
+            val selection = readlnOrNull()?.toIntOrNull()
             if (selection != null && selection > 0 && selection <= state.options.size) {
+                //TODO: navigation handler
                 viewModel.setUIState(state.options.get(selection - 1).to)
             } else {
                 println("Invalid selection. Please try again.")
