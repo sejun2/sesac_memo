@@ -13,6 +13,9 @@ import java.io.IOException
  */
 class FileMemoDatabase private constructor(private val file: File) : IMemoDatabase {
 
+    /**
+     * instanceCache : dataBase 싱글턴 객체
+     */
     companion object {
         private const val MEMO_FILENAME = "memo_file.txt"
 
@@ -25,7 +28,6 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
             if (instanceCache[file.name] == null) {
                 instanceCache[file.name] = FileMemoDatabase(file)
             }
-
             return instanceCache.get(file.name)!!
         }
 
@@ -59,6 +61,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         }
     }
 
+
     override fun readMemo(): List<Memo> {
         try {
             if (!file.exists()) throw IOException()
@@ -75,4 +78,26 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
             return emptyList()
         }
     }
+
+    override fun addMemo(memo: Memo): Boolean {
+        val currentMemo =  readMemo().toMutableList()
+        currentMemo.add(memo)
+        return writeMemo(currentMemo)
+    }
+
+    override fun modifyMemo(id:Int, content: String): Boolean {
+        val currentMemo = readMemo().toMutableList()
+        currentMemo.removeAt(id-1)
+        currentMemo.add(Memo(id, content))
+        return writeMemo(currentMemo)
+    }
+
+
+    override fun  deleteMemo(id: Int): Boolean {
+        val currentMemo = readMemo().toMutableList()
+        currentMemo.removeAt(id-1)
+        return writeMemo(currentMemo)
+    }
+
+
 }

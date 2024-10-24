@@ -1,11 +1,10 @@
 package viewmodel
 
 import model.Memo
-import screen.BaseMemoScreen
-import screen.HomeScreen
+import util.FileMemoDatabase
+import util.IMemoDatabase
 
 class MemoViewModel private constructor() {
-    lateinit var uiState: BaseMemoScreen
 
     companion object {
         @Volatile
@@ -17,38 +16,30 @@ class MemoViewModel private constructor() {
             if (INSTANCE == null) {
                 INSTANCE = MemoViewModel()
             }
-            INSTANCE!!.initializeUiState()
+
             return INSTANCE!!
         }
     }
 
-
     var memos: List<Memo> = mutableListOf()
+    val fileDemo: IMemoDatabase = FileMemoDatabase.getInstance()
 
-    fun fetchMemos() {
-
+    fun fetchMemos(): List<Memo> {
+        memos = fileDemo.readMemo()
+        return memos
     }
 
-    fun addMemos() {
-
+    fun addMemos(memo: Memo) {
+        fileDemo.addMemo(memo)
     }
 
-    fun deleteMemos() {
-
+    fun deleteMemos(id: Int) {
+        fileDemo.deleteMemo(id)
     }
 
-    fun modifyMemos() {
-
+    fun modifyMemos(id:Int, content: String) {
+        fileDemo.modifyMemo(id, content)
     }
-
-    private fun initializeUiState() {
-        uiState = HomeScreen(this)
-    }
-
-    fun setUIState(state: BaseMemoScreen) {
-        this.uiState = state
-    }
-
 }
 
 class NavigationHandler() {
