@@ -6,6 +6,7 @@ import viewmodel.MemoViewModel
 fun main(args: Array<String>) {
     println("MAIN ENTRY POINT")
 
+    // below is only for test
     val memoDatabase: IMemoDatabase = FileMemoDatabase.getInstance()
 
     val res = memoDatabase.writeMemo(
@@ -27,18 +28,6 @@ fun main(args: Array<String>) {
 
 class ConsoleView(private val viewModel: MemoViewModel) {
     fun start() {
-        while (true) {
-            val state = viewModel.uiState
-            state.displayView()
-            state.showOptions()
-            print("Select an option: ")
-            val selection = readlnOrNull()?.toIntOrNull()
-            if (selection != null && selection > 0 && selection <= state.options.size) {
-                //TODO: navigation handler
-                viewModel.setUIState(state.options.get(selection - 1).to)
-            } else {
-                println("Invalid selection. Please try again.")
-            }
-        }
+        //TODO: run views
     }
 }
