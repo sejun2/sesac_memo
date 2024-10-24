@@ -22,7 +22,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         @JvmStatic
         @Synchronized
         fun getInstance(file: File = File(MEMO_FILENAME)): FileMemoDatabase {
-            if (instanceCache.get(file.name) == null) {
+            if (instanceCache[file.name] == null) {
                 instanceCache[file.name] = FileMemoDatabase(file)
             }
 

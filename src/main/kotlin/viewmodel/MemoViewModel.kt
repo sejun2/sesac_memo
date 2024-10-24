@@ -1,8 +1,11 @@
 package viewmodel
 
 import model.Memo
+import screen.BaseMemoScreen
+import screen.HomeScreen
 
 class MemoViewModel private constructor() {
+    lateinit var uiState: BaseMemoScreen
 
     companion object {
         @Volatile
@@ -14,10 +17,11 @@ class MemoViewModel private constructor() {
             if (INSTANCE == null) {
                 INSTANCE = MemoViewModel()
             }
-
+            INSTANCE!!.initializeUiState()
             return INSTANCE!!
         }
     }
+
 
     var memos: List<Memo> = mutableListOf()
 
@@ -36,6 +40,15 @@ class MemoViewModel private constructor() {
     fun modifyMemos() {
 
     }
+
+    private fun initializeUiState() {
+        uiState = HomeScreen(this)
+    }
+
+    fun setUIState(state: BaseMemoScreen) {
+        this.uiState = state
+    }
+
 }
 
 class NavigationHandler() {

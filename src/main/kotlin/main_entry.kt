@@ -1,3 +1,4 @@
+import model.Category
 import model.Memo
 import util.FileMemoDatabase
 import util.IMemoDatabase
@@ -11,13 +12,13 @@ fun main(args: Array<String>) {
     val res = memoDatabase.writeMemo(
         listOf(
             Memo(
-                id = 1, content = "A"
+                id = 1, content = "A", category = Category.ECONOMY
             ),
             Memo(
-                id = 2, content = "B"
+                id = 2, content = "B", category = Category.TECH
             ),
             Memo(
-                id = 3, content = "C"
+                id = 3, content = "C", category = Category.ETC
             ),
         )
     )
@@ -31,11 +32,11 @@ class ConsoleView(private val viewModel: MemoViewModel) {
             val state = viewModel.uiState
             state.displayView()
             state.showOptions()
-            print("Select an option: ")
             val selection = readlnOrNull()?.toIntOrNull()
             if (selection != null && selection > 0 && selection <= state.options.size) {
-                //TODO: navigation handler
-                viewModel.setUIState(state.options.get(selection - 1).to)
+//                TODO: navigation handler
+                var screen = viewModel.setUIState(state.options.get(selection - 1).to)
+
             } else {
                 println("Invalid selection. Please try again.")
             }
