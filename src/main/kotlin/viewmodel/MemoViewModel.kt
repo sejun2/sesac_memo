@@ -1,6 +1,8 @@
 package viewmodel
 
 import model.Memo
+import util.FileMemoDatabase
+import util.IMemoDatabase
 
 class MemoViewModel private constructor() {
 
@@ -20,21 +22,23 @@ class MemoViewModel private constructor() {
     }
 
     var memos: List<Memo> = mutableListOf()
+    val fileDemo: IMemoDatabase = FileMemoDatabase.getInstance()
 
-    fun fetchMemos() {
-
+    fun fetchMemos(): List<Memo> {
+        memos = fileDemo.readMemo()
+        return memos
     }
 
-    fun addMemos() {
-
+    fun addMemos(memo: Memo) {
+        fileDemo.addMemo(memo)
     }
 
-    fun deleteMemos() {
-
+    fun deleteMemos(id: Int) {
+        fileDemo.deleteMemo(id)
     }
 
-    fun modifyMemos() {
-
+    fun modifyMemos(id:Int, content: String) {
+        fileDemo.modifyMemo(id, content)
     }
 }
 
