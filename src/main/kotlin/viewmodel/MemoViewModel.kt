@@ -46,8 +46,8 @@ class MemoViewModel private constructor() {
     }
 }
 
-class NavigationHandler(private val viewModel: MemoViewModel) {
-    private var currentScreen: BaseMemoScreen = HomeScreen(viewModel)
+class NavigationHandler() {
+    private var currentScreen: BaseMemoScreen = HomeScreen()
 
     fun getCurrentScreen(): BaseMemoScreen = currentScreen
 
@@ -56,11 +56,11 @@ class NavigationHandler(private val viewModel: MemoViewModel) {
     }
 
     fun navigateToHomeScreen() {
-        currentScreen = HomeScreen(viewModel)
+        currentScreen = HomeScreen()
     }
 
     fun navigateToCategoryScreen() {
-        currentScreen = CategoryScreen(viewModel)
+        currentScreen = CategoryScreen()
     }
 
 
