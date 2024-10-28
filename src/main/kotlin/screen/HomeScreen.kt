@@ -1,15 +1,12 @@
 package screen
 
 import model.Option
-import util.printMessageAndOptions
 import view.CONSOLE_MESSAGE_HOME_SCREEN
 import view.CONSOLE_MESSAGE_HOME_SCREEN_1
 import view.printMessageAndOptions
 import view.stringPrinter.printMessage
-import viewmodel.MemoViewModel
 
-
-class HomeScreen(private val viewModel: MemoViewModel) : BaseMemoScreen() {
+class HomeScreen() : BaseMemoScreen() {
 
     override fun displayView() {
         printMessage(CONSOLE_MESSAGE_HOME_SCREEN)

@@ -8,7 +8,7 @@ import view.stringPrinter.printMessage
 import viewmodel.MemoViewModel
 
 
-class CategoryScreen(private val viewModel: MemoViewModel): BaseMemoScreen() {
+class CategoryScreen(): BaseMemoScreen() {
     override fun displayView() {
         printMessage(CONSOLE_MESSAGE_CHOICE_CATEGORY_1)
     }
