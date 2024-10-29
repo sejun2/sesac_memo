@@ -1,23 +1,23 @@
 package screen
 
 import model.Option
-import util.CONSOLE_MESSAGE_HOME_1
-import util.CONSOLE_MESSAGE_HOME_2
-import util.printMessageAndOptions
+import view.CONSOLE_MESSAGE_HOME_SCREEN
+import view.CONSOLE_MESSAGE_HOME_SCREEN_1
+import view.printMessageAndOptions
+import view.stringPrinter.printMessage
 import viewmodel.MemoViewModel
 
-
-class HomeScreen(private val viewModel: MemoViewModel) : BaseMemoScreen() {
+class HomeScreen() : BaseMemoScreen() {
 
     override fun displayView() {
-        printMessageAndOptions(CONSOLE_MESSAGE_HOME_1)
+        printMessage(CONSOLE_MESSAGE_HOME_SCREEN)
+        printMessage(CONSOLE_MESSAGE_HOME_SCREEN_1)
     }
 
-    override fun showOptions() = printMessageAndOptions(CONSOLE_MESSAGE_HOME_2, options)
+    override fun showOptions() = printMessageAndOptions(option, message)
 
-
-   override val options = listOf(Option("메모 작성", WriteMomoScreen), Option("메모 목록 보기"), Option("종료"))
-
+    val option: List<Option<String>> = listOf(Option("메모작성"), Option("메모 목록보기"))
+    val message = " 0. 종료 "
 
 
 
