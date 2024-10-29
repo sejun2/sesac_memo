@@ -1,6 +1,5 @@
 package util
 
-import model.Category
 import model.Memo
 import org.jetbrains.annotations.TestOnly
 import java.io.File
@@ -86,10 +85,10 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         return writeMemo(currentMemo)
     }
 
-    override fun modifyMemo(id:Int, content: String, category: Category): Boolean {
+    override fun modifyMemo(id:Int, content: String): Boolean {
         val currentMemo = readMemo().toMutableList()
         currentMemo.removeAt(id-1)
-        currentMemo.add(Memo(id, content, category))
+        currentMemo.add(Memo(id, content))
         return writeMemo(currentMemo)
     }
 
