@@ -1,5 +1,6 @@
 package viewmodel
 
+import model.Category
 import model.Memo
 import util.FileMemoDatabase
 import util.IMemoDatabase
@@ -37,8 +38,8 @@ class MemoViewModel private constructor() {
         fileDemo.deleteMemo(id)
     }
 
-    fun modifyMemos(id:Int, content: String) {
-        fileDemo.modifyMemo(id, content)
+    fun modifyMemos(id:Int, content: String, category: Category) {
+        fileDemo.modifyMemo(id, content, category)
     }
 }
 

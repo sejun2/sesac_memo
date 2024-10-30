@@ -1,5 +1,6 @@
 package util
 
+import model.Category
 import model.Memo
 import org.jetbrains.annotations.TestOnly
 import java.io.File
@@ -49,9 +50,13 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
             val jsonString = MoshiParser.jsonAdapter.toJson(memos)
             if (!file.exists()) throw IOException()
 
-            with(file.bufferedWriter()) {
+           /* with(file.bufferedWriter()) {
                 write(jsonString)
                 close()
+            }*/
+
+            file.bufferedWriter().use{
+                it.write(jsonString)
             }
 
             return true
@@ -66,9 +71,11 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         try {
             if (!file.exists()) throw IOException()
 
-            with(file.bufferedReader()) {
+           /* with(file.bufferedReader()) {
                 val jsonString = readText()
-                close()
+                close()*/
+            file.bufferedReader().use {
+                val jsonString = it.readText()
 
                 val memos = MoshiParser.jsonAdapter.fromJson(jsonString)
                 return memos ?: emptyList()
@@ -85,18 +92,27 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         return writeMemo(currentMemo)
     }
 
-    override fun modifyMemo(id:Int, content: String): Boolean {
+    override fun modifyMemo(id: Int, content: String, category: Category): Boolean {
         val currentMemo = readMemo().toMutableList()
         currentMemo.removeAt(id-1)
-        currentMemo.add(Memo(id, content))
+        currentMemo.add(Memo(id, content, category))
         return writeMemo(currentMemo)
     }
 
 
+
+
     override fun  deleteMemo(id: Int): Boolean {
-        val currentMemo = readMemo().toMutableList()
-        currentMemo.removeAt(id-1)
-        return writeMemo(currentMemo)
+        try {
+            val currentMemo = readMemo().toMutableList()
+            currentMemo.removeAt(id-1)
+            writeMemo(currentMemo)
+            return true
+
+        }catch (e: Exception){
+            println("Bills 삭제 중 오류 발생: ${e.message}")
+            return false
+        }
     }
 
 

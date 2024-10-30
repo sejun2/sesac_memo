@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/model/Category.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/memo_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/memo_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/main_entry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/main_entry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Memo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Memo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/screen/BaseMemoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/screen/BaseMemoScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/screen/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/screen/HomeScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/FileMemoDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/FileMemoDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/IMemoDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/IMemoDatabase.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/viewmodel/MemoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/viewmodel/MemoViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +45,7 @@
     &quot;Gradle.Build sesac_memo.executor&quot;: &quot;Run&quot;,
     &quot;Kotlin.Main_entryKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/crud&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/junghana/Desktop/sesac_memo&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
