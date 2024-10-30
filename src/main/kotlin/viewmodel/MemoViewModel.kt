@@ -3,7 +3,7 @@ package viewmodel
 import model.Category
 import model.Memo
 import screen.BaseMemoScreen
-import screen.CategoryScreen
+import screen.DetailMemoScreen
 import screen.HomeScreen
 import util.FileMemoDatabase
 import util.IMemoDatabase
@@ -59,8 +59,8 @@ class NavigationHandler() {
         currentScreen = HomeScreen()
     }
 
-    fun navigateToCategoryScreen() {
-        currentScreen = CategoryScreen()
+    fun navigateToDetailMemoScreen(id: Int) {
+        currentScreen = DetailMemoScreen(id)
     }
 
 
