@@ -1,8 +1,9 @@
 package screen
 import model.Option
+import viewmodel.NavigationHandler
 
-abstract class BaseMemoScreen {
-    abstract fun displayView()
-    abstract fun showOptions()
+interface BaseMemoScreen {
+     fun displayView()
+     fun showOptions(navigation: NavigationHandler): Boolean
 }
 
