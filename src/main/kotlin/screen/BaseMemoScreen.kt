@@ -1,5 +1,4 @@
 package screen
-import model.Option
 import viewmodel.NavigationHandler
 
 interface BaseMemoScreen {
