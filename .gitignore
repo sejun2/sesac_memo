@@ -44,3 +44,6 @@ bin/
 ### Mac OS ###
 .DS_Store
 /.idea/gradle.xml
+
+### ETC ###
+memo_file.txt
