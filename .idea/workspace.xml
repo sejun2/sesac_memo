@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana" />
+
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -14,13 +14,15 @@ fun main(args: Array<String>) {
     val res = memoDatabase.writeMemo(
         listOf(
             Memo(
-                id = 1, content = "A", Category.TECH
+
+                id = 1, content = "A", Category.ETC
             ),
             Memo(
-                id = 2, content = "B", Category.ETC
+                id = 2, content = "B", Category.TECH
             ),
             Memo(
-                id = 3, content = "C", Category.DAILY
+                id = 3, content = "C", Category.ECONOMY
+
             ),
         )
     )
