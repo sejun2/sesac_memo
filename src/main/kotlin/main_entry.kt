@@ -2,6 +2,7 @@ import model.Category
 import model.Memo
 import util.FileMemoDatabase
 import util.IMemoDatabase
+import view.ConsoleView
 import viewmodel.MemoViewModel
 
 fun main(args: Array<String>) {
@@ -13,13 +14,13 @@ fun main(args: Array<String>) {
     val res = memoDatabase.writeMemo(
         listOf(
             Memo(
-                id = 1, content = "A"
+                id = 1, content = "A", Category.TECH
             ),
             Memo(
-                id = 2, content = "B"
+                id = 2, content = "B", Category.ETC
             ),
             Memo(
-                id = 3, content = "C"
+                id = 3, content = "C", Category.DAILY
             ),
         )
     )
@@ -27,8 +28,3 @@ fun main(args: Array<String>) {
     ConsoleView(viewModel = MemoViewModel.getInstance()).start()
 }
 
-class ConsoleView(private val viewModel: MemoViewModel) {
-    fun start() {
-        //TODO: run views
-    }
-}

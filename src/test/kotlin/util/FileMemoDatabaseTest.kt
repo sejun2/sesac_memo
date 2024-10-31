@@ -2,6 +2,7 @@ package util
 
 import io.mockk.every
 import io.mockk.spyk
+import model.Category
 import model.Memo
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -24,13 +25,13 @@ class FileMemoDatabaseTest {
     fun beforeTest() {
         memos = listOf(
             Memo(
-                id = 1, content = "A"
+                id = 1, content = "A", Category.DAILY
             ),
             Memo(
-                id = 2, content = "B"
+                id = 2, content = "B", Category.ECONOMY
             ),
             Memo(
-                id = 3, content = "C"
+                id = 3, content = "C", Category.TECH
             ),
         )
         mockFile = spyk(File("fail_memo_test_file.txt"))

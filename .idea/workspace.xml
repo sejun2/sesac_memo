@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/model/Category.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/memo_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/memo_file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/main_entry.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/main_entry.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/model/Memo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/model/Memo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/screen/BaseMemoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/screen/BaseMemoScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/screen/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/screen/HomeScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/FileMemoDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/FileMemoDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/viewmodel/MemoViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/viewmodel/MemoViewModel.kt" afterDir="false" />
-    </list>
+    <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,20 +34,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build sesac_memo.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.Main_entryKt.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/junghana/Desktop/sesac_memo&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Groovy compiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build sesac_memo.executor": "Run",
+    "Kotlin.Main_entryKt.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#3 on feat/view",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/junghana/Desktop/sesac_memo",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Groovy compiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/kotlin/util" />
@@ -91,6 +76,127 @@
       <option name="presentableId" value="Default" />
       <updated>1729482307592</updated>
     </task>
+    <task id="LOCAL-00001" summary="change abstract class to interface&#10;&#10;- 강사님이 저번에 인터페이스로 바꾸라고 피드백 주신 부분 수정했습니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730295695465</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730295695465</updated>
+    </task>
+    <task id="LOCAL-00002" summary="change abstract class to interface&#10;&#10;- 강사님이 저번에 인터페이스로 바꾸라고 피드백 주신 부분 수정했습니다&#10;- 사용하지 않는 import 삭제합니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730295731028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730295731028</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add comment and fix displayView and showOptions &#10;&#10;- 카테고리스크린에 대한 설명을 추가합니다&#10;- 세준님이 주신 피드백을대로 displayView and showOptions 수정했습니다 &#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730295853747</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730295853747</updated>
+    </task>
+    <task id="LOCAL-00004" summary="delete ConsoleMessages.kt&#10;&#10;- 사용하지 않는 파일을 삭제합니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730295895444</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730295895444</updated>
+    </task>
+    <task id="LOCAL-00005" summary="edit ConsoleView.kt&#10;&#10;- consoleView에서 showScreen을 활용해 스크린마다 뷰와 작업을 할 수 있게 변경합니다&#10;- showScreen에서 showOptions()이 boolean값을 리턴하게해서 해당값이 false가 될떄까지 showScreen()가 실행되고 currentScreen의  &#10;displayView와 showOptions가 실행됨&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730296418116</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730296418116</updated>
+    </task>
+    <task id="LOCAL-00006" summary="delete CreateMemoScreen.kt&#10;&#10;- 파일을 삭제합니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730296470198</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730296470198</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add comment and add memo&#10;&#10;- 해당 스크린에 대한 주석을 추가합니다&#10;- 메모를 작성하는 기능을 추가합니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730296551872</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730296551872</updated>
+    </task>
+    <task id="LOCAL-00008" summary="edit console messages&#10;&#10;- 콘솔메세지 이름을 명확하게 변경합니다&#10;- 선택한 메모에 관련된 콘솔 메세지를 추가합니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730296636172</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730296636172</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat DetailMemoScreen.kt&#10;&#10;- 메모의 상세내용을 보는 스크린을 만듭니다&#10;- 이 부분에 수정과 삭제를 구현하면 됩니다!&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730296868647</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730296868647</updated>
+    </task>
+    <task id="LOCAL-00010" summary="edit HomeScreen.kt&#10;&#10;- 해당 스크린에 대한 comment를 추가합니다&#10;- 사용자의 입력값에 따라 currentScreen을 변경합니다&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730296936065</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730296936065</updated>
+    </task>
+    <task id="LOCAL-00011" summary="edit InputView.kt&#10;&#10;- stringPrinter -&gt; ConsoleIo로 이름 변경&#10;- printMessageAndOptions 오버로드(옵션만 출력)&#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730297028133</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730297028133</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat MemoListScreen.kt&#10;&#10;- 메모리스트 스크린을 만듭니다&#10;- 전체메모와 카테고리별 목록 두 곳에서 사용할 수 있도록 했습니다 &#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730297083145</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1730297083145</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat MemoListTypeScreen.kt&#10;&#10;- 전체 메모 목록 or 카테고리별 메모 목록보기 둘 중 하나를 선택하는 스크린&#10;- 해당 스크린에 대한 설명을 추가했습니다&#10;- 입력값에 따라 currentScreen을 설정을 합니다 &#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730297147003</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730297147003</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730297185071</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730297185071</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana">
+      <option name="closed" value="true" />
+      <created>1730297193892</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1730297193892</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,6 +222,23 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change abstract class to interface&#10;&#10;- 강사님이 저번에 인터페이스로 바꾸라고 피드백 주신 부분 수정했습니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="change abstract class to interface&#10;&#10;- 강사님이 저번에 인터페이스로 바꾸라고 피드백 주신 부분 수정했습니다&#10;- 사용하지 않는 import 삭제합니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="add comment and fix displayView and showOptions &#10;&#10;- 카테고리스크린에 대한 설명을 추가합니다&#10;- 세준님이 주신 피드백을대로 displayView and showOptions 수정했습니다 &#10;&#10;@Jeong Hana" />
+    <MESSAGE value="delete ConsoleMessages.kt&#10;&#10;- 사용하지 않는 파일을 삭제합니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="edit ConsoleView.kt&#10;&#10;- consoleView에서 showScreen을 활용해 스크린마다 뷰와 작업을 할 수 있게 변경합니다&#10;- showScreen에서 showOptions()이 boolean값을 리턴하게해서 해당값이 false가 될떄까지 showScreen()가 실행되고 currentScreen의  &#10;displayView와 showOptions가 실행됨&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="delete CreateMemoScreen.kt&#10;&#10;- 파일을 삭제합니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="add comment and add memo&#10;&#10;- 해당 스크린에 대한 주석을 추가합니다&#10;- 메모를 작성하는 기능을 추가합니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="edit console messages&#10;&#10;- 콘솔메세지 이름을 명확하게 변경합니다&#10;- 선택한 메모에 관련된 콘솔 메세지를 추가합니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="feat DetailMemoScreen.kt&#10;&#10;- 메모의 상세내용을 보는 스크린을 만듭니다&#10;- 이 부분에 수정과 삭제를 구현하면 됩니다!&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="edit HomeScreen.kt&#10;&#10;- 해당 스크린에 대한 comment를 추가합니다&#10;- 사용자의 입력값에 따라 currentScreen을 변경합니다&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="edit InputView.kt&#10;&#10;- stringPrinter -&gt; ConsoleIo로 이름 변경&#10;- printMessageAndOptions 오버로드(옵션만 출력)&#10;&#10;@Jeong Hana" />
+    <MESSAGE value="feat MemoListScreen.kt&#10;&#10;- 메모리스트 스크린을 만듭니다&#10;- 전체메모와 카테고리별 목록 두 곳에서 사용할 수 있도록 했습니다 &#10;&#10;@Jeong Hana" />
+    <MESSAGE value="feat MemoListTypeScreen.kt&#10;&#10;- 전체 메모 목록 or 카테고리별 메모 목록보기 둘 중 하나를 선택하는 스크린&#10;- 해당 스크린에 대한 설명을 추가했습니다&#10;- 입력값에 따라 currentScreen을 설정을 합니다 &#10;&#10;@Jeong Hana" />
+    <MESSAGE value="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -123,6 +246,11 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/view/ConsoleView.kt</url>
+          <line>16</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
