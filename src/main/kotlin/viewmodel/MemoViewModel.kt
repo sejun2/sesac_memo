@@ -2,6 +2,9 @@ package viewmodel
 
 import model.Category
 import model.Memo
+import screen.BaseMemoScreen
+import screen.DetailMemoScreen
+import screen.HomeScreen
 import util.FileMemoDatabase
 import util.IMemoDatabase
 
@@ -44,5 +47,21 @@ class MemoViewModel private constructor() {
 }
 
 class NavigationHandler() {
+    private var currentScreen: BaseMemoScreen = HomeScreen()
+
+    fun getCurrentScreen(): BaseMemoScreen = currentScreen
+
+    fun setScreen(screen: BaseMemoScreen) {
+        currentScreen = screen
+    }
+
+    fun navigateToHomeScreen() {
+        currentScreen = HomeScreen()
+    }
+
+    fun navigateToDetailMemoScreen(id: Int) {
+        currentScreen = DetailMemoScreen(id)
+    }
+
 
 }
