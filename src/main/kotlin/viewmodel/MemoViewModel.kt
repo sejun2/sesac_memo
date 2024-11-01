@@ -44,6 +44,13 @@ class MemoViewModel private constructor() {
     fun modifyMemos(id:Int, content: String, category: Category) {
         fileDemo.modifyMemo(id, content, category)
     }
+
+    fun getMemoById (id: Int): Memo? {
+        val memoList = fetchMemos()
+        val selectedMemo = memoList.find { it.id == id }
+        return selectedMemo
+    }
+
 }
 
 class NavigationHandler() {
