@@ -2,7 +2,7 @@ package screen
 
 import model.Option
 import view.CONSOLE_MESSAGE_DETAIL_MEMO_1
-import view.ConsoleIo.printMessage
+import view.printMessage
 import view.printMessageAndOptions
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler

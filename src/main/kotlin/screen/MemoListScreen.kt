@@ -3,7 +3,7 @@ package screen
 import model.Category
 import view.CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO
 import view.CONSOLE_MESSAGE_WRONG_INPUT
-import view.ConsoleIo.printMessage
+import view.printMessage
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
 

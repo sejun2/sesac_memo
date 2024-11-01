@@ -5,8 +5,7 @@ import model.Option
 import view.CONSOLE_MESSAGE_CHOICE_CATEGORY
 import view.CONSOLE_MESSAGE_WRONG_INPUT
 import view.printMessageAndOptions
-import view.ConsoleIo.printMessage
-import view.inputChecker
+import view.printMessage
 import viewmodel.NavigationHandler
 
 

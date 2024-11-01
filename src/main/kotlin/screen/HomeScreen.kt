@@ -2,7 +2,7 @@ package screen
 
 import model.Option
 import view.*
-import view.ConsoleIo.printMessage
+import view.printMessage
 import viewmodel.NavigationHandler
 
 
