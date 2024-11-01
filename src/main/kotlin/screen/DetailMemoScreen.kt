@@ -7,10 +7,8 @@ import view.printMessageAndOptions
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
 
-class DetailMemoScreen(private val memoId: Int) : BaseMemoScreen {
-    val viewModel = MemoViewModel.getInstance()
-    val memoList = viewModel.fetchMemos()
-    val selectedMemo = memoList.find{ it.id == memoId}
+class DetailMemoScreen(private val id: Int) : BaseMemoScreen {
+   private val selectedMemo = MemoViewModel.getInstance().getMemoById(id)
 
     override fun displayView() {
         val option: List<Option<String>> = listOf(Option("수정"), Option("삭제"), Option("뒤로가기"), Option("홈으로") )
