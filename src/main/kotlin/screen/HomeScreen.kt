@@ -2,8 +2,7 @@ package screen
 
 import model.Option
 import view.*
-import view.ConsoleIo.input
-import view.ConsoleIo.printMessage
+import view.printMessage
 import viewmodel.NavigationHandler
 
 
@@ -38,7 +37,9 @@ class HomeScreen() : BaseMemoScreen {
     * 이 때 currentScreen이 HomeScreen이니까 HomeScreen의 displayView()와 showOption()을 보여줌
     * */
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        when(input()) {
+        val input = input() ?: return true
+
+        when(input) {
             "1" -> {
                 if (navigation.getCurrentScreen() !is HomeScreen) {  // 홈스크린이 아니면 강제로 홈스크린으로 설정
                     navigation.navigateToHomeScreen()
@@ -58,10 +59,4 @@ class HomeScreen() : BaseMemoScreen {
         }
 
     }
-
-
-
-
-
-
 }

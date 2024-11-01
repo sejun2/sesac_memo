@@ -1,11 +1,7 @@
 package screen
 
 import model.Option
-import view.ConsoleIo.printMessage
-import view.CONSOLE_MESSAGE_SHOW_MEMO_LIST_SELECTOR
-import view.CONSOLE_MESSAGE_WRONG_INPUT
-import view.ConsoleIo.input
-import view.printMessageAndOptions
+import view.*
 import viewmodel.NavigationHandler
 
 
@@ -35,8 +31,9 @@ class MemoListTypeScreen() : BaseMemoScreen {
     }
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
+        val input = input() ?: return true
 
-        when(input()) {
+        when(input) {
             "1" -> {
                 navigation.setScreen(MemoListScreen())
                 return true

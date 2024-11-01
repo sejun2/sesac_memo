@@ -2,13 +2,9 @@ package view
 
 import model.Option
 
-object ConsoleIo {
     fun printMessage(message: String) {
         println(message)
     }
-    fun input() = readLine()
-}
-
 
 /*
 * @params: message: String, list: List<Option>
@@ -26,18 +22,39 @@ fun<T> optionFormatter (list: List<Option<T>>): String {
 
 fun<T>printMessageAndOptions(list: List<Option<T>>, otherOptions: String) {
     val formattedOption = optionFormatter(list)
-    return ConsoleIo.printMessage(formattedOption + otherOptions)
+    return printMessage(formattedOption + otherOptions)
 }
 
 fun<T>printMessageAndOptions(message: String, list: List<Option<T>>) {
     val formattedOption = optionFormatter(list)
-    return ConsoleIo.printMessage(message + formattedOption)
+    return printMessage(message + formattedOption)
 }
 fun<T>printMessageAndOptions(list: List<Option<T>>) {
     val formattedOption = optionFormatter(list)
-    return ConsoleIo.printMessage(formattedOption)
+    return printMessage(formattedOption)
 }
 
 fun printMessageAndOptions(message: String, vararg options: String){
-    ConsoleIo.printMessage(message.format(*options))
+    printMessage(message.format(*options))
+}
+
+// input으로 들어오는 값이 null 혹은 빈문자열 혹은 공백인지 확인. Boolean을 리턴함
+fun inputChecker(input: String?) = input.isNullOrBlank()
+
+/* input을 받고 inputChecker로 null인지 빈문자열인지 확인함
+* true면(null이거나 빈문자열) null리턴
+* false면 제대로 입력된 값이므로 input값 리턴
+*/
+
+fun input(): String? {
+    val input = readln().trim()
+
+    return when(inputChecker(input)) {
+        true -> {
+            printMessageAndOptions(CONSOLE_MESSAGE_WRONG_INPUT)
+            null
+        }
+        else -> input
+    }
+
 }

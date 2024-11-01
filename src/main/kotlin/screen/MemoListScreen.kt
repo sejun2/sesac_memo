@@ -3,8 +3,8 @@ package screen
 import model.Category
 import view.CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO
 import view.CONSOLE_MESSAGE_WRONG_INPUT
-import view.ConsoleIo.input
-import view.ConsoleIo.printMessage
+import view.input
+import view.printMessage
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
 
@@ -65,25 +65,28 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
 
     }
 
+
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        val input = input()
+        val input = input() ?: return true
+
         when {
             input == "0" -> {
                 navigation.setScreen(MemoListTypeScreen())
                 return true
             }
-            input?.toInt() == null -> {
+
+            input.toInt() < 0 || input.toInt() > displayMemoList.size -> {
                 printMessage(CONSOLE_MESSAGE_WRONG_INPUT)
                 return true
             }
-            input.toInt() !in displayMemoList.size until 1 -> {
-                printMessage(CONSOLE_MESSAGE_WRONG_INPUT)
-                return true
-            }
-            else -> {
+            input.toInt() in 1..displayMemoList.size -> {
                 val selectedMemoIdx = input.toInt() - 1
                 val selectedMemoId = displayMemoList[selectedMemoIdx].id
                 navigation.navigateToDetailMemoScreen(selectedMemoId)
+                return true
+            }
+            else -> {
+                printMessage(CONSOLE_MESSAGE_WRONG_INPUT)
                 return true
             }
         }
