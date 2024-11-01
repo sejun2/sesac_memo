@@ -2,7 +2,6 @@ package screen
 
 import model.Option
 import view.*
-import view.ConsoleIo.input
 import view.ConsoleIo.printMessage
 import viewmodel.NavigationHandler
 
@@ -60,10 +59,4 @@ class HomeScreen() : BaseMemoScreen {
         }
 
     }
-
-
-
-
-
-
 }
