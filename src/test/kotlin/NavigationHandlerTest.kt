@@ -33,7 +33,6 @@ class NavigationHandlerTest {
         }
     }
 
-
     @Nested
     inner class NavigateToHomeScreenTest {
         @Test
