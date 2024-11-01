@@ -67,14 +67,11 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
 
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        val input = input()
+        val input = view.input() ?: return true
+
         when {
             input == "0" -> {
                 navigation.setScreen(MemoListTypeScreen())
-                return true
-            }
-            input?.toInt() == null -> {
-                printMessage(CONSOLE_MESSAGE_WRONG_INPUT)
                 return true
             }
             input.toInt() < 0 || input.toInt() > displayMemoList.size -> {

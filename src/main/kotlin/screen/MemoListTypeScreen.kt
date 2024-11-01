@@ -35,8 +35,9 @@ class MemoListTypeScreen() : BaseMemoScreen {
     }
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
+        val input = view.input() ?: return true
 
-        when(input()) {
+        when(input) {
             "1" -> {
                 navigation.setScreen(MemoListScreen())
                 return true

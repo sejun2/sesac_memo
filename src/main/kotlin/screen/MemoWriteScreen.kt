@@ -4,7 +4,6 @@ import model.Category
 import model.Memo
 import model.Option
 import view.CONSOLE_MESSAGE_WRITE_MEMO
-import view.ConsoleIo.input
 import view.printMessageAndOptions
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
@@ -35,7 +34,8 @@ class MemoWriteScreen(
     }
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        val input = input()
+        val input = view.input() ?: return true
+
         when(input) {
             "1" -> {
                 navigation.setScreen(backScreen)
@@ -46,14 +46,12 @@ class MemoWriteScreen(
                 return true
             }
             else -> {
-                input?.let {
                     val viewModel = MemoViewModel.getInstance()
                     val memoList = viewModel.fetchMemos()
                     val newId = if (memoList.isEmpty()) 0 else memoList.maxOf { it.id } + 1
                     val newMemo = Memo(newId, input, category)
                     viewModel.addMemos(newMemo)
                     navigation.navigateToHomeScreen()
-                }
                 return true
             }
         }
