@@ -18,6 +18,4 @@ class ConsoleView(private val viewModel: MemoViewModel) {
             if(!consoleRunning) break
         }
     }
-
-
 }
