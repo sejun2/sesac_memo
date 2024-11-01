@@ -2,6 +2,7 @@ package screen
 
 import model.Category
 import model.Option
+import view.input
 import view.CONSOLE_MESSAGE_CHOICE_CATEGORY
 import view.CONSOLE_MESSAGE_WRONG_INPUT
 import view.printMessageAndOptions
@@ -47,7 +48,7 @@ class CategoryScreen(private val backScreen: BaseMemoScreen, private val isWrite
         }
 
         override fun showOptions(navigation: NavigationHandler): Boolean {
-            val input = view.input() ?: return true
+            val input = input() ?: return true
 
             when (input) {
                 "1", "2", "3", "4" -> {

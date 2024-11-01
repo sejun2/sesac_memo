@@ -4,6 +4,7 @@ import model.Category
 import model.Memo
 import model.Option
 import view.CONSOLE_MESSAGE_WRITE_MEMO
+import view.input
 import view.printMessageAndOptions
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
@@ -34,7 +35,7 @@ class MemoWriteScreen(
     }
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        val input = view.input() ?: return true
+        val input = input() ?: return true
 
         when(input) {
             "1" -> {

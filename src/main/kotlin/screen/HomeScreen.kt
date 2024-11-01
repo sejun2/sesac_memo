@@ -37,7 +37,7 @@ class HomeScreen() : BaseMemoScreen {
     * 이 때 currentScreen이 HomeScreen이니까 HomeScreen의 displayView()와 showOption()을 보여줌
     * */
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        val input = view.input() ?: return true
+        val input = input() ?: return true
 
         when(input) {
             "1" -> {
