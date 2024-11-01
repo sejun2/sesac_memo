@@ -12,9 +12,10 @@ class ConsoleView(private val viewModel: MemoViewModel) {
         return screen.showOptions(navigation)
     }
 
-
     fun start() {
-        while (showScreen()) {
+        while (true) {
+            val consoleRunning = showScreen()
+            if(!consoleRunning) break
         }
     }
 
