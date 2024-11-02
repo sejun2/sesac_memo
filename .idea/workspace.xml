@@ -7,9 +7,7 @@
     <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/memo_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/memo_file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/screen/EditMemoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/screen/EditMemoScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/view/InputView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/view/InputView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/view/OutputView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/view/OutputView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/util/FileMemoDatabaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/util/FileMemoDatabaseTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +89,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build sesac_memo.executor": "Run",
+    "Gradle.FileMemoDatabaseTest.addMemo.executor": "Run",
     "Gradle.sesac_memo [testClasses].executor": "Run",
     "Kotlin.Main_entryKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -109,7 +108,55 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/util" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.sesac_memo [testClasses]">
+  <component name="RunManager" selected="Gradle.FileMemoDatabaseTest.deleteMemo">
+    <configuration name="FileMemoDatabaseTest.addMemo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;util.FileMemoDatabaseTest.addMemo&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="FileMemoDatabaseTest.deleteMemo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;util.FileMemoDatabaseTest.deleteMemo&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="sesac_memo [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -141,6 +188,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FileMemoDatabaseTest.deleteMemo" />
+        <item itemvalue="Gradle.FileMemoDatabaseTest.addMemo" />
         <item itemvalue="Gradle.sesac_memo [testClasses]" />
         <item itemvalue="Kotlin.Main_entryKt" />
       </list>
