@@ -50,12 +50,12 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
             val jsonString = MoshiParser.jsonAdapter.toJson(memos)
             if (!file.exists()) throw IOException()
 
-            /* with(file.bufferedWriter()) {
-                 write(jsonString)
-                 close()
-             }*/
+           /* with(file.bufferedWriter()) {
+                write(jsonString)
+                close()
+            }*/
 
-            file.bufferedWriter().use {
+            file.bufferedWriter().use{
                 it.write(jsonString)
             }
 
@@ -71,9 +71,9 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         try {
             if (!file.exists()) throw IOException()
 
-            /* with(file.bufferedReader()) {
-                 val jsonString = readText()
-                 close()*/
+           /* with(file.bufferedReader()) {
+                val jsonString = readText()
+                close()*/
             file.bufferedReader().use {
                 val jsonString = it.readText()
 
@@ -87,53 +87,32 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     }
 
     override fun addMemo(memo: Memo): Boolean {
-        val currentMemo = readMemo().toMutableList()
+        val currentMemo =  readMemo().toMutableList()
         currentMemo.add(memo)
         return writeMemo(currentMemo)
     }
 
     override fun modifyMemo(id: Int, content: String, category: Category): Boolean {
         val currentMemo = readMemo().toMutableList()
-
-        val isValidId = (id > 0 && id <= currentMemo.size)
-        val isEmptyContent = content.isEmpty()
-
-        when {
-            isValidId -> throw IllegalStateException("유효하지 않은 id 입니다")
-            isEmptyContent -> throw IllegalArgumentException("내용이 비어 있습니다.")
-
-            else -> {
-                try {
-                    val index = id - 1
-                    when (currentMemo[index].id == id) {
-                        true -> {
-                            currentMemo.removeAt(index)
-                            currentMemo.add(index, Memo(id, content, category)) //기존 순서 유지하면서 리스트 추가됨
-                            return writeMemo(currentMemo)
-                        }
-
-                        false -> throw IllegalStateException("입력한 메모값이 index와 일치하지 않습니다")
-                    }
-
-                } catch (e: IndexOutOfBoundsException) {
-                    throw IllegalArgumentException("유효하지 않는 id ${id}")
-                }
-            }
-        }
+        currentMemo.removeAt(id-1)
+        currentMemo.add(Memo(id, content, category))
+        return writeMemo(currentMemo)
     }
+
+
 
 
     override fun deleteMemo(id: Int): Boolean {
         try {
             val currentMemo = readMemo().toMutableList()
-            if (currentMemo.isEmpty() || id - 1 < 0 || id - 1 >= currentMemo.size) {
+            if (currentMemo.isEmpty() || id-1 < 0 || id-1 >= currentMemo.size) {
                 return false
             }
-            currentMemo.removeAt(id - 1)
+            currentMemo.removeAt(id-1)
             writeMemo(currentMemo)
             return true
 
-        } catch (e: Exception) {
+        }catch (e: Exception){
             println("Bills 삭제 중 오류 발생: ${e.message}")
             return false
         }
