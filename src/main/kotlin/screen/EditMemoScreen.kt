@@ -17,7 +17,7 @@ class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel =
 
         printMessage(CONSOLE_MESSAGE_EDIT_MEMO)
         printMessageAndOptions(option)
-        printMessage("[${selectedMemo?.id}]")
+        printMessage("[${selectedMemo?.id} ]")
         printMessage("[ ${selectedMemo?.category} ]")
         printMessage("[ ${selectedMemo?.content} ]")
 
