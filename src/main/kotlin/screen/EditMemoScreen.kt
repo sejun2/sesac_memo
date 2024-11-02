@@ -1,10 +1,7 @@
 package screen
 
 import model.Option
-import view.CONSOLE_MESSAGE_EDIT_MEMO
-import view.input
-import view.printMessage
-import view.printMessageAndOptions
+import view.*
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
 

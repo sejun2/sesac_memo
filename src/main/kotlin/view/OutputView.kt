@@ -15,11 +15,12 @@ val CONSOLE_MESSAGE_WRITE_MEMO = "메모를 작성 후 저장하려면 엔터를
 val CONSOLE_MESSAGE_SHOW_MEMO_LIST_SELECTOR = "원하는 보기방식 번호를 입력 후 엔터를 눌러주세요."
 
 
-//// 선택한 메모의 상세내용 관련 콘솔 메세지
+// 선택한 메모의 상세내용 관련 콘솔 메세지
 val CONSOLE_MESSAGE_DETAIL_MEMO_1 = "선택한 메모의 내용입니다.\n원하는 번호를 선택 후 엔터를 눌러 주세요."
 
-//메모 수정페이지 콘솔 메세지
+// 선택한 메모의 수정 관련 콘솔 메세지
 val CONSOLE_MESSAGE_EDIT_MEMO = "수정하려면 콘솔에서 작성하고 엔터를 눌러주세요"
 
+//선택한 메모 삭제 관련 콘솔 메세지
 val CONSOEL_MESSAGE_DELETE_MEMO = "삭제하려면 번호를 선택 후 엔터를 눌러 주세요."
 

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana" />
+    <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/memo_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/memo_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/screen/EditMemoScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/screen/EditMemoScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/view/InputView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/view/InputView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/view/OutputView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/view/OutputView.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,12 +24,43 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Sesac_memo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Sesac_memo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Sesac_memo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Sesac_memo" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Sesac_memo" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Sesac_memo" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="testRuntimeClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
               </path>
             </expand>
             <select />
@@ -54,9 +91,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build sesac_memo.executor": "Run",
+    "Gradle.sesac_memo [testClasses].executor": "Run",
     "Kotlin.Main_entryKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feat/detailedview",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/junghana/Desktop/sesac_memo",
     "project.structure.last.edited": "Project",
@@ -70,7 +109,29 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/util" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.sesac_memo [testClasses]">
+    <configuration name="sesac_memo [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="testClasses" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="Main_entryKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main_entryKt" />
       <module name="Sesac_memo.main" />
@@ -80,6 +141,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.sesac_memo [testClasses]" />
         <item itemvalue="Kotlin.Main_entryKt" />
       </list>
     </recent_temporary>
