@@ -1,8 +1,9 @@
 package view
 
 import model.Option
+import viewmodel.NavigationHandler
 
-    fun printMessage(message: String) {
+fun printMessage(message: String) {
         println(message)
     }
 
@@ -58,3 +59,7 @@ fun input(): String? {
     }
 
 }
+
+
+
+

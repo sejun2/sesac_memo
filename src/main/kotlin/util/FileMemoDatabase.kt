@@ -102,9 +102,12 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
 
 
 
-    override fun  deleteMemo(id: Int): Boolean {
+    override fun deleteMemo(id: Int): Boolean {
         try {
             val currentMemo = readMemo().toMutableList()
+            if (currentMemo.isEmpty() || id-1 < 0 || id-1 >= currentMemo.size) {
+                return false
+            }
             currentMemo.removeAt(id-1)
             writeMemo(currentMemo)
             return true

@@ -4,9 +4,9 @@ import io.mockk.every
 import io.mockk.spyk
 import model.Category
 import model.Memo
-import org.junit.jupiter.api.Assertions.assertArrayEquals
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import java.io.File
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -18,6 +18,7 @@ class FileMemoDatabaseTest {
     private lateinit var memos: List<Memo>
     private lateinit var file: File
     private lateinit var mockFile: File
+    private lateinit var memo: Memo
 
     private val MEMO_FILE_NAME = "memo_test_file.txt"
 
@@ -39,6 +40,7 @@ class FileMemoDatabaseTest {
         file = File(MEMO_FILE_NAME)
         fileMemoDatabase = FileMemoDatabase.getInstance(file)
         fileMemoDatabaseForFail = FileMemoDatabase.getInstance(mockFile)
+        memo = Memo(4, "D", Category.TECH)
     }
 
     @AfterTest
@@ -78,5 +80,37 @@ class FileMemoDatabaseTest {
         val res = fileMemoDatabase.readMemo()
 
         assertArrayEquals(memos.toTypedArray(), res.toTypedArray())
+    }
+
+    @Test
+    fun addMemo(){
+        fileMemoDatabase = FileMemoDatabase.getInstance()
+        val initialSize  = fileMemoDatabase.readMemo().size
+
+        fileMemoDatabase.addMemo(memo)
+        val res = fileMemoDatabase.readMemo()
+
+            assertAll(
+                { assertEquals(initialSize + 1, res.size) },  // 크기가 1 증가했는지 확인
+                { assertTrue(res.contains(memo)) },           // 추가한 메모가 존재하는지 확인
+                { assertEquals(memo, res[res.size - 1]) }  // 마지막에 추가되었는지 확인
+            )
+
+    }
+
+    @Test
+    fun deleteMemo(){
+        fileMemoDatabase = FileMemoDatabase.getInstance()
+        val initialSize  = fileMemoDatabase.readMemo().size
+
+        val targetId = 2
+        fileMemoDatabase.deleteMemo(targetId)
+        val res = fileMemoDatabase.readMemo()
+
+        assertAll(
+            { assertEquals(initialSize -1, res.size) },         // 크기가 1 감소했는지 확인
+            { assertFalse(res.any { it.id == targetId }) },     // 삭제한 ID를 가진 메모가 없는지 확인
+            { assertTrue(res.none { it == memos[1] }) }             // 삭제한 메모가 리스트에 없는지 확인
+        )
     }
 }
