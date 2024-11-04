@@ -92,33 +92,25 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         return writeMemo(currentMemo)
     }
 
-    override fun modifyMemo(memo: Memo): Boolean {
-        try {
-            val currentMemo = readMemo().toMutableList()
-            if (memo.id - 1 < 0 || memo.id - 1 > currentMemo.size) return false
-            currentMemo[memo.id - 1] = Memo(memo.id, memo.content, memo.category)
-            return writeMemo(currentMemo)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return false
+    override fun modifyMemo(memo: Memo): Boolean = runCatching {
+        val currentMemo = readMemo().toMutableList()
+        require(memo.id - 1 in currentMemo.indices) {
+            false
         }
-    }
+        currentMemo[memo.id - 1] = Memo(memo.id, memo.content, memo.category)
+        return writeMemo(currentMemo)
+    }.onFailure { e ->
+        e.printStackTrace()
+    }.getOrDefault(false)
 
-
-    override fun deleteMemo(id: Int): Boolean {
-        try {
-            val currentMemo = readMemo().toMutableList()
-            if (currentMemo.isEmpty() || id - 1 < 0 || id - 1 >= currentMemo.size) {
-                return false
-            }
-            currentMemo.removeAt(id - 1)
-            writeMemo(currentMemo)
-            return true
-
-        } catch (e: Exception) {
-            println("Bills 삭제 중 오류 발생: ${e.message}")
-            return false
-        }
-    }
+    override fun deleteMemo(id: Int): Boolean = runCatching {
+        val currentMemo = readMemo().toMutableList()
+        require(currentMemo.isEmpty() || id - 1 in currentMemo.indices) { false }
+        currentMemo.removeAt(id - 1)
+        writeMemo(currentMemo)
+        return true
+    }.onFailure { e ->
+        e.printStackTrace()
+    }.getOrDefault(false)
 
 }
