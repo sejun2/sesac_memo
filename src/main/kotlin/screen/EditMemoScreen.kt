@@ -1,5 +1,6 @@
 package screen
 
+import model.Memo
 import model.Option
 import view.*
 import viewmodel.MemoViewModel
@@ -14,7 +15,6 @@ class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel =
 
         printMessage(CONSOLE_MESSAGE_EDIT_MEMO)
         printMessageAndOptions(option)
-        printMessage("[${selectedMemo?.id} ]")
         printMessage("[ ${selectedMemo?.category} ]")
         printMessage("[ ${selectedMemo?.content} ]")
 
@@ -22,15 +22,13 @@ class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel =
 
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
-        val input = input() ?: return true
-
-        when (input) {
+        when (val input = input()) {
             "1" -> navigation.setScreen(DetailMemoScreen(id))
             "2" -> navigation.navigateToHomeScreen()
+            null -> navigation.setScreen((MemoListTypeScreen()))
             else -> {
                 selectedMemo?.let {
-                    viewModel.modifyMemos(selectedMemo.id, input, selectedMemo.category)
-                    navigation.setScreen((MemoListScreen()))
+                    viewModel.modifyMemos(Memo(selectedMemo.id, input, selectedMemo.category))
                 }
             }
         }

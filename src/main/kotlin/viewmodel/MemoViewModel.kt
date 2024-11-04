@@ -41,8 +41,8 @@ class MemoViewModel private constructor() {
         fileDemo.deleteMemo(id)
     }
 
-    fun modifyMemos(id:Int, content: String, category: Category) {
-        fileDemo.modifyMemo(id, content, category)
+    fun modifyMemos(memo: Memo) {
+        fileDemo.modifyMemo(memo)
     }
 
     fun getMemoById (id: Int): Memo? {

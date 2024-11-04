@@ -11,7 +11,7 @@ interface IMemoDatabase {
     // add memo list to database
     fun addMemo(memo: Memo) : Boolean
     // modify list from database
-    fun modifyMemo(id:Int, content: String, category: Category) : Boolean
+    fun modifyMemo(memo: Memo) : Boolean
 
     //delete list from database
     fun deleteMemo(id: Int): Boolean

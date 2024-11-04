@@ -50,12 +50,12 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
             val jsonString = MoshiParser.jsonAdapter.toJson(memos)
             if (!file.exists()) throw IOException()
 
-           /* with(file.bufferedWriter()) {
-                write(jsonString)
-                close()
-            }*/
+            /* with(file.bufferedWriter()) {
+                 write(jsonString)
+                 close()
+             }*/
 
-            file.bufferedWriter().use{
+            file.bufferedWriter().use {
                 it.write(jsonString)
             }
 
@@ -71,9 +71,9 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         try {
             if (!file.exists()) throw IOException()
 
-           /* with(file.bufferedReader()) {
-                val jsonString = readText()
-                close()*/
+            /* with(file.bufferedReader()) {
+                 val jsonString = readText()
+                 close()*/
             file.bufferedReader().use {
                 val jsonString = it.readText()
 
@@ -87,36 +87,33 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     }
 
     override fun addMemo(memo: Memo): Boolean {
-        val currentMemo =  readMemo().toMutableList()
+        val currentMemo = readMemo().toMutableList()
         currentMemo.add(memo)
         return writeMemo(currentMemo)
     }
 
-    override fun modifyMemo(id: Int, content: String, category: Category): Boolean {
+    override fun modifyMemo(memo: Memo): Boolean {
         val currentMemo = readMemo().toMutableList()
-        currentMemo.removeAt(id-1)
-        currentMemo.add(Memo(id, content, category))
+        currentMemo.removeAt(memo.id - 1)
+        currentMemo.add(Memo(memo.id, memo.content, memo.category))
         return writeMemo(currentMemo)
     }
-
-
 
 
     override fun deleteMemo(id: Int): Boolean {
         try {
             val currentMemo = readMemo().toMutableList()
-            if (currentMemo.isEmpty() || id-1 < 0 || id-1 >= currentMemo.size) {
+            if (currentMemo.isEmpty() || id - 1 < 0 || id - 1 >= currentMemo.size) {
                 return false
             }
-            currentMemo.removeAt(id-1)
+            currentMemo.removeAt(id - 1)
             writeMemo(currentMemo)
             return true
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             println("Bills 삭제 중 오류 발생: ${e.message}")
             return false
         }
     }
-
 
 }
