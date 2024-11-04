@@ -93,10 +93,15 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     }
 
     override fun modifyMemo(memo: Memo): Boolean {
-        val currentMemo = readMemo().toMutableList()
-        currentMemo.removeAt(memo.id - 1)
-        currentMemo.add(Memo(memo.id, memo.content, memo.category))
-        return writeMemo(currentMemo)
+        try {
+            val currentMemo = readMemo().toMutableList()
+            if (memo.id - 1 < 0 || memo.id - 1 > currentMemo.size) return false
+            currentMemo[memo.id - 1] = Memo(memo.id, memo.content, memo.category)
+            return writeMemo(currentMemo)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return false
+        }
     }
 
 

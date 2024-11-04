@@ -113,5 +113,26 @@ class FileMemoDatabaseTest {
             { assertTrue(res.none { it == memos[1] }) }             // 삭제한 메모가 리스트에 없는지 확인
         )
     }
+    @Test
+    fun modifyMemo(){
+        fileMemoDatabase = FileMemoDatabase.getInstance()
+        val initialSize  = fileMemoDatabase.readMemo().size
+        val isModified= fileMemoDatabase.modifyMemo(Memo(3,"E",Category.TECH))
+        val res = fileMemoDatabase.readMemo()
+        val modified = res.find { it.id == 3 }
+
+        assertAll(
+            { assertTrue(isModified) },                    // 수정 성공
+            { assertEquals(initialSize, res.size) },    // 크기는 변하지 않음
+            { assertNotNull(modified)},               // 수정된 메모 존재
+            { assertEquals("E", modified?.content) },  // 내용 수정됨
+            { assertEquals(3, modified?.id) },         // id는 유지
+
+            // 다른 메모들은 변경되지 않았는지 확인
+            { assertEquals("A", res.find { it.id == 1 }?.content) },
+            { assertEquals("B", res.find { it.id == 2 }?.content) }
+        )
+
+    }
 
 }
