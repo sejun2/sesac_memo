@@ -18,6 +18,7 @@ class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel =
         printMessage("[ category ] ${selectedMemo?.category} ")
         printMessage("[ content ] ${selectedMemo?.content}")
 
+
     }
 
 
@@ -25,10 +26,11 @@ class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel =
         when (val input = input()) {
             "1" -> navigation.setScreen(DetailMemoScreen(id))
             "2" -> navigation.navigateToHomeScreen()
-            null -> navigation.setScreen((MemoListTypeScreen()))
+            null -> navigation.setScreen((MemoListScreen()))
             else -> {
                 selectedMemo?.let {
                     viewModel.modifyMemos(Memo(selectedMemo.id, input, selectedMemo.category))
+                    navigation.setScreen((MemoListScreen()))
                 }
             }
         }

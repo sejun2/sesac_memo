@@ -1,8 +1,11 @@
 package screen
 
 import model.Category
-import util.*
-import view.*
+import model.Memo
+import view.CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO
+import view.CONSOLE_MESSAGE_WRONG_INPUT
+import view.input
+import view.printMessage
 import viewmodel.MemoViewModel
 
 
@@ -66,6 +69,8 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
                     printMessage("$ANSI_BLUE$ANSI_BLUE$ANSI_BOLD [${index + 1}] ${previewMemo}$ANSI_RESET")
                 }
             }
+            printMessage("[${memo.id}] ${previewMemo}")
+
         }
 
 
@@ -86,14 +91,13 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
                 return true
             }
 
-            input.toInt() < 0 || input.toInt() > displayMemoList.size -> {
+            !isMemoExist(input.toInt(), displayMemoList)  -> {
                 printMessage(CONSOLE_MESSAGE_WRONG_INPUT)
                 return true
             }
-            input.toInt() in 1..displayMemoList.size -> {
-                val selectedMemoIdx = input.toInt() - 1
-                val selectedMemoId = displayMemoList[selectedMemoIdx].id
-                navigation.navigateToDetailMemoScreen(selectedMemoId)
+            isMemoExist(input.toInt(), displayMemoList) -> {
+                val memoId = input.toInt() // 해당 인덱스의 메모 객체를 가져옴
+                navigation.navigateToDetailMemoScreen(memoId)  // 메모 객체의 실제 ID 사용
                 return true
             }
             else -> {
@@ -101,5 +105,13 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
                 return true
             }
         }
+    }
+
+    private fun isMemoExist(memoId: Int, memoList: List<Memo>) : Boolean{
+        val res = memoList.find {
+            it.id == memoId
+        }
+
+        return if(res!=null) true else false
     }
 }

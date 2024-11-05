@@ -101,25 +101,45 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
        }.getOrDefault(false)
     }
 
+    /**
+     * 조건 해당하는 index 찾지 못하면 ->  if (index == -1) return@runCatching false:  false 반환하고 runCatching 빠져나움
+     * 찾으면 -> true 반환하고 메모 저장
+     */
     override fun modifyMemo(memo: Memo): Boolean = runCatching {
+        //1. id 유효성 검사
+        require(memo.id > 0){"잘못된 id 입니다."}
+        //2. 현재 메모 목록 가져오기
         val currentMemo = readMemo().toMutableList()
-        require(memo.id - 1 in currentMemo.indices) {
-            false
+        //3. 수정할 메모의 인덱스 찾기
+        val index = currentMemo.indexOfFirst{ it.id == memo.id } //currnentMemo에서 조건에 만족하는 첫번째 인덱스 찾음
+
+
+        when{  //4. 조건에 만족하는 index 찾지 못하면  -1 반환  -> index == -1 이면 false 반환하고 runCatching 빠져나옴
+            index == -1 -> return@runCatching false
+            else -> {
+                currentMemo[index] = memo
+                writeMemo(currentMemo)
+            }
         }
-        currentMemo[memo.id - 1] = Memo(memo.id, memo.content, memo.category)
-        return writeMemo(currentMemo)
-    }.onFailure { e ->
-        e.printStackTrace()
-    }.getOrDefault(false)
+
+    }.getOrDefault(false)//예외가 발생했을 때 예외를 무시하고 디폴트값 받음
+
 
     override fun deleteMemo(id: Int): Boolean = runCatching {
+        require(id > 0) { "잘못된 id 입니다." }
+
         val currentMemo = readMemo().toMutableList()
-        if(currentMemo.isEmpty()) return false
-        currentMemo.removeAt(id - 1)
-        writeMemo(currentMemo)
-        return true
-    }.onFailure { e ->
-        e.printStackTrace()
+        val index = currentMemo.indexOfFirst { it.id == id }
+
+        when{
+            currentMemo.isEmpty() -> return@runCatching false
+            index == -1 -> return@runCatching false
+            else -> {
+                currentMemo.removeAt(index)
+                writeMemo(currentMemo)
+            }
+        }
+
     }.getOrDefault(false)
 
 }
