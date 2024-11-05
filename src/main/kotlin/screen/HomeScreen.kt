@@ -1,9 +1,9 @@
 package screen
 
 import model.Option
+import util.NavigationHandler
 import view.*
 import view.printMessage
-import viewmodel.NavigationHandler
 
 
 class HomeScreen() : BaseMemoScreen {

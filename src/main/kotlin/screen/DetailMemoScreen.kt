@@ -1,9 +1,9 @@
 package screen
 
 import model.Option
+import util.NavigationHandler
 import view.*
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 
 
 class DetailMemoScreen(private val id: Int) : BaseMemoScreen {

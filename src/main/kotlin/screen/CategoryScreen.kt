@@ -2,12 +2,12 @@ package screen
 
 import model.Category
 import model.Option
+import util.NavigationHandler
 import view.input
 import view.CONSOLE_MESSAGE_CHOICE_CATEGORY
 import view.CONSOLE_MESSAGE_WRONG_INPUT
 import view.printMessageAndOptions
 import view.printMessage
-import viewmodel.NavigationHandler
 
 
 /*

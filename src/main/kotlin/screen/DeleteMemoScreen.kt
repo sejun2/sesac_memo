@@ -1,9 +1,9 @@
 package screen
 
 import model.Option
+import util.NavigationHandler
 import view.*
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 
 class DeleteMemoScreen(private val id: Int, private val viewModel: MemoViewModel = MemoViewModel.getInstance()): BaseMemoScreen {
     private val selectedMemo = viewModel.getMemoById(id)

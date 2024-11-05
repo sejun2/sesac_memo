@@ -4,7 +4,6 @@ import model.Category
 import util.*
 import view.*
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 
 
 /*

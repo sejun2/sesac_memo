@@ -6,8 +6,8 @@ import screen.CategoryScreen
 import screen.DetailMemoScreen
 import screen.HomeScreen
 import screen.MemoListScreen
+import util.NavigationHandler
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 import kotlin.test.BeforeTest
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

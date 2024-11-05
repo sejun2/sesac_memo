@@ -3,11 +3,11 @@ package screen
 import model.Category
 import model.Memo
 import model.Option
+import util.NavigationHandler
 import view.CONSOLE_MESSAGE_WRITE_MEMO
 import view.input
 import view.printMessageAndOptions
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 
 
 /*

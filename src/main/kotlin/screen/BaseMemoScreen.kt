@@ -1,5 +1,5 @@
 package screen
-import viewmodel.NavigationHandler
+import util.NavigationHandler
 
 interface BaseMemoScreen {
      fun displayView()
