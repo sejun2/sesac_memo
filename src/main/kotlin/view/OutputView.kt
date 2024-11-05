@@ -1,6 +1,9 @@
 package view
 
-val CONSOLE_MESSAGE_HOME_SCREEN_1 = "📝 MEMO MANAGEMENT CONSOLE PROGRAM📝"
+import util.ANSI_BLUE
+import util.ANSI_RESET
+
+val CONSOLE_MESSAGE_HOME_SCREEN_1 = "📝$ANSI_BLUE MEMO MANAGEMENT CONSOLE PROGRAM $ANSI_RESET📝"
 val CONSOLE_MESSAGE_HOME_SCREEN_2 = "원하는 번호를 입력 후 엔터를 눌러주세요"
 
 // 두 번이상 사용되는 콘솔 메세지는 아래와 같이 따로 분리했습니다

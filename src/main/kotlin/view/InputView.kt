@@ -1,6 +1,9 @@
 package view
 
 import model.Option
+import util.ANSI_BOLD
+import util.ANSI_LIGHT_YELLOW
+import util.ANSI_RESET
 
 fun printMessage(message: String) {
         println(message)
@@ -22,16 +25,16 @@ fun<T> optionFormatter (list: List<Option<T>>): String {
 
 fun<T>printMessageAndOptions(list: List<Option<T>>, otherOptions: String) {
     val formattedOption = optionFormatter(list)
-    return printMessage(formattedOption + otherOptions)
+    return printMessage("$ANSI_BOLD $ANSI_LIGHT_YELLOW $formattedOption $otherOptions $ANSI_RESET")
 }
 
 fun<T>printMessageAndOptions(message: String, list: List<Option<T>>) {
     val formattedOption = optionFormatter(list)
-    return printMessage(message + formattedOption)
+    return printMessage("$message $ANSI_BOLD $ANSI_LIGHT_YELLOW $formattedOption")
 }
 fun<T>printMessageAndOptions(list: List<Option<T>>) {
     val formattedOption = optionFormatter(list)
-    return printMessage(formattedOption)
+    return printMessage("$ANSI_BOLD $ANSI_LIGHT_YELLOW $formattedOption $ANSI_RESET")
 }
 
 fun printMessageAndOptions(message: String, vararg options: String){

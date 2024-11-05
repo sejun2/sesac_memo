@@ -1,6 +1,7 @@
 package screen
 
 import model.Category
+import util.*
 import view.*
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
@@ -63,7 +64,7 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
                     } else {
                         "${memo.content.slice(0..memoPreviewNumber)}..."
                     }
-                    printMessage("[${index + 1}] ${previewMemo}")
+                    printMessage("$ANSI_BLUE$ANSI_BLUE$ANSI_BOLD [${index + 1}] ${previewMemo}$ANSI_RESET")
                 }
             }
         }
