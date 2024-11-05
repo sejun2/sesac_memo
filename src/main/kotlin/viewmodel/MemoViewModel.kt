@@ -1,10 +1,6 @@
 package viewmodel
 
-import model.Category
 import model.Memo
-import screen.BaseMemoScreen
-import screen.DetailMemoScreen
-import screen.HomeScreen
 import util.FileMemoDatabase
 import util.IMemoDatabase
 
@@ -25,8 +21,8 @@ class MemoViewModel private constructor() {
         }
     }
 
-    var memos: List<Memo> = mutableListOf()
-    val fileDemo: IMemoDatabase = FileMemoDatabase.getInstance()
+    private var memos: List<Memo> = mutableListOf()
+    private val fileDemo: IMemoDatabase = FileMemoDatabase.getInstance()
 
     fun fetchMemos(): List<Memo> {
         memos = fileDemo.readMemo()
@@ -52,9 +48,6 @@ class MemoViewModel private constructor() {
     }
 
 }
-
-class NavigationHandler() {
-    private var currentScreen: BaseMemoScreen = HomeScreen()
 
     fun getCurrentScreen(): BaseMemoScreen = currentScreen
 

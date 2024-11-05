@@ -1,9 +1,8 @@
 package screen
 
 import model.Option
+import util.NavigationHandler
 import view.*
-import viewmodel.NavigationHandler
-
 
 /*
 * 전체 메모 목록 or 카테고리별 메모 목록보기 둘 중 하나를 선택하는 스크린

@@ -1,7 +1,7 @@
 package view
 
+import util.NavigationHandler
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 
 class ConsoleView(private val viewModel: MemoViewModel) {
     private var navigation = NavigationHandler()

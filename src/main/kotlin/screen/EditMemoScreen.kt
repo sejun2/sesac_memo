@@ -2,9 +2,9 @@ package screen
 
 import model.Memo
 import model.Option
+import util.NavigationHandler
 import view.*
 import viewmodel.MemoViewModel
-import viewmodel.NavigationHandler
 
 class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel = MemoViewModel.getInstance()) :
     BaseMemoScreen {
@@ -15,8 +15,9 @@ class EditMemoScreen(private val id: Int, private val viewModel: MemoViewModel =
 
         printMessage(CONSOLE_MESSAGE_EDIT_MEMO)
         printMessageAndOptions(option)
-        printMessage("[ ${selectedMemo?.category}]")
-        printMessage("[ ${selectedMemo?.content}]")
+        printMessage("[ category ] ${selectedMemo?.category} ")
+        printMessage("[ content ] ${selectedMemo?.content}")
+
 
     }
 
