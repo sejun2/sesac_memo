@@ -21,6 +21,9 @@ val CONSOLE_MESSAGE_DETAIL_MEMO_1 = "선택한 메모의 내용입니다.\n원�
 // 선택한 메모의 수정 관련 콘솔 메세지
 val CONSOLE_MESSAGE_EDIT_MEMO = "수정하려면 콘솔에서 작성하고 엔터를 눌러주세요"
 
-//선택한 메모 삭제 관련 콘솔 메세지
+// 선택한 메모 삭제 관련 콘솔 메세지
 val CONSOEL_MESSAGE_DELETE_MEMO = "삭제하려면 번호를 선택 후 엔터를 눌러 주세요."
+
+// 해당되는 메모가 없는 경우 나타나는 콘솔 메세지
+val CONSOLE_NONE_OF_MEMO = "해당하는 메모가 없습니다"
 
