@@ -14,8 +14,8 @@ class DetailMemoScreen(private val id: Int) : BaseMemoScreen {
 
         printMessage(CONSOLE_MESSAGE_DETAIL_MEMO_1)
         printMessageAndOptions(option)
-        printMessage("[ ${selectedMemo?.category} ]")
-        printMessage("[ ${selectedMemo?.content} ]")
+        printMessage("[ category ] ${selectedMemo?.category} ")
+        printMessage("[ content ] \n ${selectedMemo?.content} ")
     }
 
     override fun showOptions(navigation: NavigationHandler): Boolean {

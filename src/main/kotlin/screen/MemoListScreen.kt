@@ -1,10 +1,8 @@
 package screen
 
 import model.Category
-import view.CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO
-import view.CONSOLE_MESSAGE_WRONG_INPUT
-import view.input
-import view.printMessage
+import util.*
+import view.*
 import viewmodel.MemoViewModel
 import viewmodel.NavigationHandler
 
@@ -50,23 +48,37 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
     } ?: memoList
 
     override fun displayView() {
-        printMessage(CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO)
-        printMessage("0. 뒤로가기")
-
-        val memoPreviewNumber = 20
-        displayMemoList.mapIndexed { index, memo ->
-            val previewMemo = if(memo.content.length < memoPreviewNumber) {
-                memo.content
-            } else {
-                "${memo.content.slice(0..memoPreviewNumber)}..."
+        when {
+            displayMemoList.isEmpty() -> {
+                printMessage(CONSOLE_NONE_OF_MEMO)
             }
-            printMessage("[${index + 1}] ${previewMemo}")
+            else -> {
+                printMessage(CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO)
+                printMessage("0. 뒤로가기")
+
+                val memoPreviewNumber = 20
+
+                displayMemoList.mapIndexed { index, memo ->
+                    val previewMemo = if(memo.content.length < memoPreviewNumber) {
+                        memo.content
+                    } else {
+                        "${memo.content.slice(0..memoPreviewNumber)}..."
+                    }
+                    printMessage("$ANSI_BLUE$ANSI_BLUE$ANSI_BOLD [${index + 1}] ${previewMemo}$ANSI_RESET")
+                }
+            }
         }
+
 
     }
 
 
     override fun showOptions(navigation: NavigationHandler): Boolean {
+        if(displayMemoList.isEmpty()) {
+            navigation.navigateToHomeScreen()
+            return true
+        }
+
         val input = input() ?: return true
 
         when {

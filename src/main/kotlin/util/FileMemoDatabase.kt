@@ -1,6 +1,6 @@
 package util
 
-import model.Category
+import kotlinx.coroutines.*
 import model.Memo
 import org.jetbrains.annotations.TestOnly
 import java.io.File
@@ -19,6 +19,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
      */
     companion object {
         private const val MEMO_FILENAME = "memo_file.txt"
+        private const val EMPTY_MEMO_LIST = "[]"
 
         @Volatile
         private var instanceCache = HashMap<String, FileMemoDatabase>()
@@ -42,6 +43,9 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     init {
         if (!file.exists()) {
             file.createNewFile()
+            file.bufferedWriter().use {
+                it.write(EMPTY_MEMO_LIST)
+            }
         }
     }
 
@@ -71,9 +75,9 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         try {
             if (!file.exists()) throw IOException()
 
-            /* with(file.bufferedReader()) {
-                 val jsonString = readText()
-                 close()*/
+           /* with(file.bufferedReader()) {
+                val jsonString = readText()
+                close()*/
             file.bufferedReader().use {
                 val jsonString = it.readText()
 
@@ -86,10 +90,15 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         }
     }
 
-    override fun addMemo(memo: Memo): Boolean {
-        val currentMemo = readMemo().toMutableList()
-        currentMemo.add(memo)
-        return writeMemo(currentMemo)
+    override fun addMemo(memo: Memo): Boolean = runBlocking(Dispatchers.IO) {
+        val currentMemo =  readMemo().toMutableList()
+       runCatching {
+           currentMemo.add(memo)
+           writeMemo(currentMemo)
+       }.onFailure {
+        e -> e.printStackTrace()
+        println(e.message)
+       }.getOrDefault(false)
     }
 
     override fun modifyMemo(memo: Memo): Boolean = runCatching {
@@ -105,7 +114,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
 
     override fun deleteMemo(id: Int): Boolean = runCatching {
         val currentMemo = readMemo().toMutableList()
-        require(currentMemo.isEmpty() || id - 1 in currentMemo.indices) { false }
+        if(currentMemo.isEmpty()) return false
         currentMemo.removeAt(id - 1)
         writeMemo(currentMemo)
         return true

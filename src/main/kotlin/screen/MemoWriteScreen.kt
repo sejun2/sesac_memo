@@ -49,7 +49,7 @@ class MemoWriteScreen(
             else -> {
                     val viewModel = MemoViewModel.getInstance()
                     val memoList = viewModel.fetchMemos()
-                    val newId = if (memoList.isEmpty()) 0 else memoList.maxOf { it.id } + 1
+                    val newId = if (memoList.isEmpty()) 1 else memoList.maxOf { it.id } + 1
                     val newMemo = Memo(newId, input, category)
                     viewModel.addMemos(newMemo)
                     navigation.navigateToHomeScreen()
