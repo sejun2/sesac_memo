@@ -19,6 +19,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
      */
     companion object {
         private const val MEMO_FILENAME = "memo_file.txt"
+        private const val EMPTY_MEMO_LIST = "[]"
 
         @Volatile
         private var instanceCache = HashMap<String, FileMemoDatabase>()
@@ -42,6 +43,9 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     init {
         if (!file.exists()) {
             file.createNewFile()
+            file.bufferedWriter().use {
+                it.write(EMPTY_MEMO_LIST)
+            }
         }
     }
 
@@ -71,9 +75,9 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
         try {
             if (!file.exists()) throw IOException()
 
-            /* with(file.bufferedReader()) {
-                 val jsonString = readText()
-                 close()*/
+           /* with(file.bufferedReader()) {
+                val jsonString = readText()
+                close()*/
             file.bufferedReader().use {
                 val jsonString = it.readText()
 
@@ -87,7 +91,7 @@ class FileMemoDatabase private constructor(private val file: File) : IMemoDataba
     }
 
     override fun addMemo(memo: Memo): Boolean {
-        val currentMemo = readMemo().toMutableList()
+        val currentMemo =  readMemo().toMutableList()
         currentMemo.add(memo)
         return writeMemo(currentMemo)
     }
