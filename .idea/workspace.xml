@@ -7,6 +7,7 @@
     <list default="true" id="13d2b1e3-874b-4366-8831-af7f9a0134bd" name="Changes" comment="feat MemoViewModel.kt&#10;&#10;- 함수 navigateToDetailMemoScreen를 추가합니다  &#10;&#10;@Jeong Hana">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/memo_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/memo_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/util/FileMemoDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/util/FileMemoDatabase.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/util/FileMemoDatabaseTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/util/FileMemoDatabaseTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,29 +87,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build sesac_memo.executor": "Run",
-    "Gradle.FileMemoDatabaseTest.addMemo.executor": "Run",
-    "Gradle.sesac_memo [testClasses].executor": "Run",
-    "Kotlin.Main_entryKt.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat/detailedview",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/junghana/Desktop/sesac_memo",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Groovy compiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build sesac_memo.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FileMemoDatabaseTest.addMemo.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FileMemoDatabaseTest.deleteMemo.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FileMemoDatabaseTest.modifyMemo.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.sesac_memo [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.Main_entryKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/detailedview&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/junghana/Desktop/sesac_memo&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Groovy compiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/kotlin/util" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.FileMemoDatabaseTest.deleteMemo">
+  <component name="RunManager" selected="Gradle.FileMemoDatabaseTest.modifyMemo">
     <configuration name="FileMemoDatabaseTest.addMemo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -157,6 +160,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="FileMemoDatabaseTest.modifyMemo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;util.FileMemoDatabaseTest.modifyMemo&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="sesac_memo [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -188,10 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FileMemoDatabaseTest.modifyMemo" />
+        <item itemvalue="Kotlin.Main_entryKt" />
         <item itemvalue="Gradle.FileMemoDatabaseTest.deleteMemo" />
         <item itemvalue="Gradle.FileMemoDatabaseTest.addMemo" />
         <item itemvalue="Gradle.sesac_memo [testClasses]" />
-        <item itemvalue="Kotlin.Main_entryKt" />
       </list>
     </recent_temporary>
   </component>

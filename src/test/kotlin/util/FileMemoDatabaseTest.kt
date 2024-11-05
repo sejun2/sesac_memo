@@ -44,7 +44,7 @@ class FileMemoDatabaseTest {
     }
 
     @AfterTest
-    fun afterTest(){
+    fun afterTest() {
         // remove test memo file after test
         file.delete()
         mockFile.delete()
@@ -83,34 +83,56 @@ class FileMemoDatabaseTest {
     }
 
     @Test
-    fun addMemo(){
+    fun addMemo() {
         fileMemoDatabase = FileMemoDatabase.getInstance()
-        val initialSize  = fileMemoDatabase.readMemo().size
+        val initialSize = fileMemoDatabase.readMemo().size
 
         fileMemoDatabase.addMemo(memo)
         val res = fileMemoDatabase.readMemo()
 
-            assertAll(
-                { assertEquals(initialSize + 1, res.size) },  // 크기가 1 증가했는지 확인
-                { assertTrue(res.contains(memo)) },           // 추가한 메모가 존재하는지 확인
-                { assertEquals(memo, res[res.size - 1]) }  // 마지막에 추가되었는지 확인
-            )
+        assertAll(
+            { assertEquals(initialSize + 1, res.size) },  // 크기가 1 증가했는지 확인
+            { assertTrue(res.contains(memo)) },           // 추가한 메모가 존재하는지 확인
+            { assertEquals(memo, res[res.size - 1]) }  // 마지막에 추가되었는지 확인
+        )
 
     }
 
     @Test
-    fun deleteMemo(){
+    fun deleteMemo() {
         fileMemoDatabase = FileMemoDatabase.getInstance()
-        val initialSize  = fileMemoDatabase.readMemo().size
+        val initialSize = fileMemoDatabase.readMemo().size
 
         val targetId = 2
         fileMemoDatabase.deleteMemo(targetId)
         val res = fileMemoDatabase.readMemo()
 
         assertAll(
-            { assertEquals(initialSize -1, res.size) },         // 크기가 1 감소했는지 확인
+            { assertEquals(initialSize - 1, res.size) },         // 크기가 1 감소했는지 확인
             { assertFalse(res.any { it.id == targetId }) },     // 삭제한 ID를 가진 메모가 없는지 확인
             { assertTrue(res.none { it == memos[1] }) }             // 삭제한 메모가 리스트에 없는지 확인
         )
     }
+    @Test
+    fun modifyMemo(){
+        fileMemoDatabase = FileMemoDatabase.getInstance()
+        val initialSize  = fileMemoDatabase.readMemo().size
+        val isModified= fileMemoDatabase.modifyMemo(Memo(3,"E",Category.TECH))
+        val res = fileMemoDatabase.readMemo()
+        val modified = res.find { it.id == 3 }
+
+        assertAll(
+            { assertTrue(isModified) },                    // 수정 성공
+            { assertEquals(initialSize, res.size) },    // 크기는 변하지 않음
+            { assertNotNull(modified)},               // 수정된 메모 존재
+            { assertEquals("E", modified?.content) },  // 내용 수정됨
+            { assertEquals(3, modified?.id) },         // id는 유지
+
+            // 다른 메모들은 변경되지 않았는지 확인
+            { assertEquals("A", res.find { it.id == 1 }?.content) },
+            { assertEquals("B", res.find { it.id == 2 }?.content) }
+        )
+
+    }
+
 }
