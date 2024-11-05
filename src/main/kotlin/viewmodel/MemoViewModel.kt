@@ -67,11 +67,6 @@ class NavigationHandler() {
     }
 
     fun navigateToDetailMemoScreen(id: Int) {
-        val memoListLength = MemoViewModel.getInstance().fetchMemos().size
-        when{
-         id < 0 || id > memoListLength -> return
-         id in 1..memoListLength -> currentScreen = DetailMemoScreen(id)
-         else -> return
-        }
+         currentScreen = DetailMemoScreen(id)
     }
 }
