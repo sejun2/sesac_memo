@@ -25,8 +25,8 @@ class MemoViewModel private constructor() {
         }
     }
 
-    var memos: List<Memo> = mutableListOf()
-    val fileDemo: IMemoDatabase = FileMemoDatabase.getInstance()
+    private var memos: List<Memo> = mutableListOf()
+    private val fileDemo: IMemoDatabase = FileMemoDatabase.getInstance()
 
     fun fetchMemos(): List<Memo> {
         memos = fileDemo.readMemo()
