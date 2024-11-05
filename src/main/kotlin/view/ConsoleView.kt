@@ -1,9 +1,8 @@
 package view
 
 import util.NavigationHandler
-import viewmodel.MemoViewModel
 
-class ConsoleView(private val viewModel: MemoViewModel) {
+class ConsoleView() {
     private var navigation = NavigationHandler()
 
     private fun showScreen(): Boolean {
