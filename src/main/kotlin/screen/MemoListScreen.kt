@@ -2,10 +2,11 @@ package screen
 
 import model.Category
 import model.Memo
-import view.CONSOLE_MESSAGE_SELECT_SPECIFIC_MEMO
-import view.CONSOLE_MESSAGE_WRONG_INPUT
-import view.input
-import view.printMessage
+import util.ANSI_BLUE
+import util.ANSI_BOLD
+import util.ANSI_RESET
+import util.NavigationHandler
+import view.*
 import viewmodel.MemoViewModel
 
 
@@ -64,12 +65,11 @@ class MemoListScreen(private val category: Category? = null) : BaseMemoScreen{
                     val previewMemo = if(memo.content.length < memoPreviewNumber) {
                         memo.content
                     } else {
-                        "${memo.content.slice(0..memoPreviewNumber)}..."
+                        "${memo.content.slice(0 until memoPreviewNumber)}..."
                     }
-                    printMessage("$ANSI_BLUE$ANSI_BLUE$ANSI_BOLD [${index + 1}] ${previewMemo}$ANSI_RESET")
+                    printMessage("$ANSI_BLUE$ANSI_BOLD[${memo.id}] ${previewMemo}$ANSI_RESET")
                 }
             }
-            printMessage("[${memo.id}] ${previewMemo}")
 
         }
 
